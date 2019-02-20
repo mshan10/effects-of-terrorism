@@ -16,3 +16,8 @@ print("There are " + str(nRow) + " rows in the dataset")
 
 dataSet.rename(columns={'iyear':'Year','imonth':'Month','iday':'Day','country_txt':'Country','region_txt':'Region','attacktype1_txt':'AttackType','target1':'Target','nkill':'Killed','nwound':'Wounded','summary':'Summary','gname':'Group','targtype1_txt':'Target_type','weaptype1_txt':'Weapon_type','motive':'Motive'},inplace=True)
 dataSet=dataSet[['Year', 'Month', 'Day', 'Country', 'Region', 'city', 'latitude', 'longitude', 'AttackType', 'Killed', 'Wounded', 'Target', 'Summary', 'Group', 'Target_type', 'Weapon_type', 'Motive']]
+
+newDataSet = dataSet[dataSet.Year.isin(['2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016', '2017'])]
+nRow, nCol = newDataSet.shape
+print ("There are " + str(nRow) + " rows in the dataset")
+newDataSet.to_csv('out.csv', encoding="ISO-8859-1")
