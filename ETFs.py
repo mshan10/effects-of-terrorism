@@ -63,3 +63,24 @@ with open('../ProjData/Data/ETFs/xlv.us.txt') as csvfile:
     ax.plot(date2, price2)
     fig.savefig('HealthcareETF.png', bbox_inches='tight')
 
+price4 = []
+date4 = []
+i4 = 0
+
+with open('../ProjData/Data/ETFs/dia.us.txt') as csvfile:
+    CSV = csv.reader(csvfile, delimiter=',')
+    for line in CSV:
+        if (i4 is 15):
+            price4.append(line[2])
+            date4.append(line[0])
+            i4 = 0
+        i4 += 1
+
+    print(len(price4))
+    # plot points along new axis
+    mpl.use('agg')  # create a resultant .png file
+    fig = plt.figure(4, figsize=(27, 28))  # set figure size
+    ax = fig.add_subplot(111)
+    ax.plot(date4, price4)
+    fig.savefig('DJI-ETF.png', bbox_inches='tight')
+
